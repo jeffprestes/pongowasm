@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golang & Wasm - Pong</title>
+</head>
+<body>
+  <h1 id="loadMsg">Loading...</h1>
+  <script src="wasm_exec.js"></script>
+  <script>
+    (async function() {
+      const go = new Go();
+      const source = await fetch("main.wasm");
+      WebAssembly.instantiateStreaming(source, go.importObject)
+      .then( (result) => {
+        go.run(result.instance)
+        .then( () => {
+          console.log("Go Inicializado ");  
+          let loadMsg = document.getElementById("loadMsg")
+          loadMsg.innerHTML = "";      
+        })
+        .catch( (err) => {
+          console.error("Erro go.run: ", err.message, err);
+        });
+      })
+      .catch( (err) => {
+          console.error("Erro instantiateStreaming: ", err.message, err);
+        });  
+    })();      
+  </script>
+</body>
+</html>
