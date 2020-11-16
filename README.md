@@ -19,3 +19,9 @@ GOOS=js GOARCH=wasm go build -o ./html/main.wasm ./wasm/.
 ```bash
 go run main.go
 ```
+
+## To run at Heroku free server
+
+```bash
+git push heroku main:master
+```
