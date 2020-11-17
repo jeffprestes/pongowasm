@@ -5,7 +5,7 @@ Example of Go & Wasm. Based on https://github.com/dstoiko/go-pong-wasm but with 
 ## Copy wasm_exec
 
 ```bash
-cp $(go env GOROOT)/misc/wasm/wasm_exec.js ./site/wasm_exec.js
+cp $(go env GOROOT)/misc/wasm/wasm_exec.js ./html/wasm_exec.js
 ```
 
 ## Compile wasm
